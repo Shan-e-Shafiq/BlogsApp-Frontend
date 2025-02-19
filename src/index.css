@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+    padding: 2px;
+}
+
+::-webkit-scrollbar-thumb {
+    /* background: #3B82F6; */
+    background: #999999;
+    border-radius: 10px;
+}
+
+.commentsContainer::-webkit-scrollbar {
+    width: 8px;
+}
+
+.commentsContainer::-webkit-scrollbar-track {
+    background: transparent;
+    padding: 2px;
+}
+
+.commentsContainer::-webkit-scrollbar-thumb {
+    background: #cbcbcb;
+    border-radius: 10px;
+}
