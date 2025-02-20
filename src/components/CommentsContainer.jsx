@@ -16,10 +16,10 @@ export default function CommentsContainer({ data, setdata, allCommentsFetched, s
         if (waitForApiCall.current === true || allCommentsFetched.current === true) {
             return
         }
-        console.log('handle scroll')
+        // console.log('handle scroll')
         const { scrollTop, scrollHeight, clientHeight } = commentsContainerRef.current;
         if (scrollTop + clientHeight >= scrollHeight - 10) {
-            console.log('End reached')
+            // console.log('End reached')
             waitForApiCall.current = true
             setEndReached(true);
         } else {
@@ -45,7 +45,7 @@ export default function CommentsContainer({ data, setdata, allCommentsFetched, s
 
             return noDuplicateComments
         } else {
-            console.log('LENGTH IS ZERO')
+            // console.log('LENGTH IS ZERO')
             return newlyFetchedComments
         }
 
@@ -53,7 +53,7 @@ export default function CommentsContainer({ data, setdata, allCommentsFetched, s
 
 
     async function fetchMoreComments() {
-        console.log('I am calling api')
+        // console.log('I am calling api')
         pageNumber.current++
         const response = await getBlogComments(id, pageNumber.current)
         allCommentsFetched.current = !response.data.hasMoreComments
@@ -93,9 +93,9 @@ export default function CommentsContainer({ data, setdata, allCommentsFetched, s
         }
         const response = await postComment(params)
         if (response.status === 201) {
-            console.log('newly added', newComment)
+            // // console.log('newly added', newComment)
             newlyAddedComments.current.push(newComment)
-            console.log("new Comments", newlyAddedComments.current)
+            // // console.log("new Comments", newlyAddedComments.current)
             postBtnRef.current.disabled = false
             commentInput.current.value = ''
             setdata(prevState => {

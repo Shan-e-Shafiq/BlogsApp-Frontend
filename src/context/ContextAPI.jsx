@@ -102,7 +102,7 @@ export default function ContextAPI({ children }) {
     }, [User])
 
     useEffect(() => {
-        console.log("User", User)
+        // console.log("User", User)
     }, [User])
 
 

@@ -5,7 +5,7 @@ export default function PostedBlogCard(props) {
 
     function handleClick() {
         navigate('/view-edit-blog/123')
-        console.log('click')
+        // console.log('click')
     }
     function handlePublisherClick() {
         alert('publisher')
@@ -13,11 +13,11 @@ export default function PostedBlogCard(props) {
     function handleEdit(e) {
         e.stopPropagation()
         navigate('/edit-blog/123')
-        console.log('edit blog')
+        // console.log('edit blog')
     }
     function handleDelete(e) {
         e.stopPropagation()
-        console.log('delete blog')
+        // console.log('delete blog')
     }
 
     const categoryColorMap = {

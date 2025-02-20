@@ -4,7 +4,6 @@ import CategorySelect from '../components/CategorySelect'
 import BlogCard from '../components/BlogCard'
 import { AppContext } from '../context/ContextAPI'
 import ContentLoadingPlaceholder from '../components/ContentLoadingPlaceholder'
-import SnackbarAlert from '../components/SnackbarAlert'
 import { getBlogsPublisherID } from '../services/Blogs'
 
 
@@ -29,7 +28,7 @@ export default function YourBlogsPage() {
         setLoading(true)
         userBlogsPageNumber.current++
         const response = await getBlogsPublisherID(User._id, userBlogsPageNumber.current, 12)
-        console.log("blogData by publisher", response.data.blogs)
+        // console.log("blogData by publisher", response.data.blogs)
         if (response.status === 200) {
             setUserBlogsData(prevBlogs => { return [...prevBlogs, ...response.data.blogs] })
             setAllBlogsFetched(!response.data.hasMoreBlogs)
@@ -86,7 +85,7 @@ export default function YourBlogsPage() {
 
     useEffect(() => {
         if (EndReached === true && AllBlogsFetched === false) {
-            console.log("End is reached")
+            // console.log("End is reached")
             fetchBlogs()
         }
     }, [EndReached])

@@ -85,7 +85,7 @@ export default function HomePage() {
 
     useEffect(() => {
         if (EndReached === true && AllBlogsFetched === false) {
-            console.log("End is reached")
+            // console.log("End is reached")
             fetchBlogs()
         }
     }, [EndReached])

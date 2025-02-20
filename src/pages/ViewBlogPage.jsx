@@ -5,13 +5,12 @@ import ContentLoadingPlaceholder from '../components/ContentLoadingPlaceholder'
 import { deleteBlog, getBlogById } from '../services/Blogs'
 import dayjs from 'dayjs'
 import { categoryColorMap, NumbersPrefix } from '../utils'
-import CommentsContainer from '../components/commentsContainer'
 import ShareButton from '../components/ShareButton'
 import LikeButton from '../components/LikeButton'
 import AlertDialog from '../components/AlertDialog'
 import { AppContext } from '../context/ContextAPI'
 import FullScreenLoader from '../components/FullScreenLoader'
-
+import CommentsContainer from '../components/CommentsContainer'
 
 
 export default function ViewBlogPage() {
@@ -22,7 +21,7 @@ export default function ViewBlogPage() {
     async function fetchBlog() {
         const response = await getBlogById(id)
         if (response.status === 200) {
-            console.log(response.data.blog)
+            // console.log(response.data.blog)
             allCommentsFetched.current = !response.data.blog.hasMoreComments
             setdata(response.data.blog)
         } else {

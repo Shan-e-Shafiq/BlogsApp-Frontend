@@ -15,7 +15,7 @@ export default function LikeButton({ setNumberOfLikes }) {
         setDelayTimer(isLikedPreviously)
         const response = await likeBlog(params)
         if (response.status === 200) {
-            console.log('liked')
+            // console.log('liked')
         } else {
             isTimerSet.current = false
         }
@@ -28,7 +28,7 @@ export default function LikeButton({ setNumberOfLikes }) {
         setDelayTimer(isLikedPreviously)
         const response = await unlikeBlog(params)
         if (response.status === 200) {
-            console.log('unliked')
+            // console.log('unliked')
         } else {
             isTimerSet.current = false
         }

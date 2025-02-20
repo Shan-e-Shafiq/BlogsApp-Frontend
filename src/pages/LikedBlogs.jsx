@@ -36,7 +36,7 @@ export default function LikedBlogs() {
         const stop = start + 12
         const likedBlogs = User.likedBlogs.slice(start, stop)
         const response = await getlikedBlogs(likedBlogs)
-        console.log("liked Blogs", response.data.blogs)
+        // console.log("liked Blogs", response.data.blogs)
         if (response.status === 200) {
             setLikedBlogsData(prevBlogs => { return [...prevBlogs, ...response.data.blogs] })
             // setAllBlogsFetched(User.likedBlogs.length <= stop)
@@ -92,7 +92,7 @@ export default function LikedBlogs() {
 
     useEffect(() => {
         if (EndReached === true && AllBlogsFetched === false) {
-            console.log("End is reached")
+            // console.log("End is reached")
             fetchBlogs()
         }
     }, [EndReached])

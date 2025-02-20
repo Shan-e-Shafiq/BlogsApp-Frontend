@@ -45,7 +45,7 @@ export default function PostBlogPage() {
         } else {
             alert('Something went Wrong! Please Try Again.')
         }
-        console.log("publish", data)
+        // console.log("publish", data)
         setLoading(false)
     }
 
@@ -60,7 +60,7 @@ export default function PostBlogPage() {
         const response = await editBlog(params)
         if (response.status === 201) {
             const updatedBlog = response.data.blog
-            console.log('updatedBlog', updatedBlog)
+            // console.log('updatedBlog', updatedBlog)
             setBlogsData(prevState => prevState.map(blog =>
                 blog._id === updatedBlog._id ? updatedBlog : blog
             ));

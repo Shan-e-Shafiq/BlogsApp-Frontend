@@ -30,7 +30,7 @@ export default function PublisherBlogsPage() {
         setLoading(true)
         pageNumber.current++
         const response = await getBlogsPublisherID(publisherID, pageNumber.current, 12)
-        console.log("blogData by publisher", response.data.blogs)
+        // console.log("blogData by publisher", response.data.blogs)
         if (response.status === 200) {
             BackupData.current = [...BackupData.current, ...response.data.blogs]
             setData(prevBlogs => { return [...prevBlogs, ...response.data.blogs] })
@@ -82,7 +82,7 @@ export default function PublisherBlogsPage() {
 
     useEffect(() => {
         if (EndReached === true && AllBlogsFetched === false) {
-            console.log("End is reached")
+            // console.log("End is reached")
             fetchBlogs()
         }
     }, [EndReached])
