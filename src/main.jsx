@@ -6,11 +6,11 @@ import { BrowserRouter } from "react-router-dom"
 import ContextAPI from './context/ContextAPI.jsx'
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
+  <>
     <ContextAPI>
       <BrowserRouter>
         <App />
       </BrowserRouter>
     </ContextAPI>
-  </StrictMode>,
+  </>
 )

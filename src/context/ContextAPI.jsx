@@ -50,7 +50,7 @@ export default function ContextAPI({ children }) {
         })
         pageNumber.current = -1
         userBlogsPageNumber.current = -1
-        likedBlogsPageNumber.current = -1
+        // likedBlogsPageNumber.current = -1
     }
 
     // VARIABLES
@@ -69,7 +69,7 @@ export default function ContextAPI({ children }) {
     const [Loading, setLoading] = useState(true)
     const pageNumber = useRef(-1)
     const userBlogsPageNumber = useRef(-1)
-    const likedBlogsPageNumber = useRef(-1)
+    // const likedBlogsPageNumber = useRef(-1)
 
 
     const contextObject = {
@@ -81,7 +81,7 @@ export default function ContextAPI({ children }) {
         Loading, setLoading,
         pageNumber,
         userBlogsPageNumber,
-        likedBlogsPageNumber,
+        // likedBlogsPageNumber,
         ResetStates
     }
 

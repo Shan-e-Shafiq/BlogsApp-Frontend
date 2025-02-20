@@ -81,12 +81,20 @@ export default function ViewBlogPage() {
     const [Loading, setLoading] = useState(true)
     const [backdrop, setbackdrop] = useState(false)
     const [data, setdata] = useState({})
+    const [NumberOfLikes, setNumberOfLikes] = useState(0)
     const { User, setUser, setBlogsData, setshowSnackbarAlert } = useContext(AppContext)
 
 
     useEffect(() => {
         fetchBlog()
     }, [])
+
+    useEffect(() => {
+        if (Loading == false) {
+            setNumberOfLikes(data.likes)
+        }
+    }, [Loading])
+
 
 
     return (
@@ -137,7 +145,9 @@ export default function ViewBlogPage() {
                                         <div className={`px-4 py-1 rounded-full w-fit text-white text-md font-semibold ${categoryColorMap[data.category]}`}>
                                             {data.category}
                                         </div>
-                                        <div className='text-gray-600 text-lg font-semibold'><i className="fa-solid fa-heart"></i>{` ${NumbersPrefix(data.likes)} likes`}</div>
+                                        <div className='text-gray-600 text-lg font-semibold'><i className="fa-solid fa-heart"></i>
+                                            {` ${NumbersPrefix(NumberOfLikes)} likes`}
+                                        </div>
                                     </div>
                             }
 
@@ -171,7 +181,7 @@ export default function ViewBlogPage() {
 
                                         // SHARE AND LIKE BUTTONS
                                         <div className="flex items-center gap-2 ml-auto sm:ml-0 mt-2 sm:mt-0">
-                                            <LikeButton />
+                                            <LikeButton setNumberOfLikes={setNumberOfLikes} />
                                             <ShareButton title={data.title} />
                                         </div>
                             }

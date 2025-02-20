@@ -26,18 +26,21 @@ export default function LikedBlogs() {
             setLoading(false)
             return
         }
+        if (LikedBlogsData.length === User.likedBlogs.length) {
+            setLoading(false)
+            setAllBlogsFetched(true)
+            return
+        }
         setLoading(true)
-        likedBlogsPageNumber.current++
-        const start = likedBlogsPageNumber.current * 12
+        const start = LikedBlogsData.length
         const stop = start + 12
         const likedBlogs = User.likedBlogs.slice(start, stop)
         const response = await getlikedBlogs(likedBlogs)
         console.log("liked Blogs", response.data.blogs)
         if (response.status === 200) {
             setLikedBlogsData(prevBlogs => { return [...prevBlogs, ...response.data.blogs] })
-            setAllBlogsFetched(User.likedBlogs.length <= stop)
+            // setAllBlogsFetched(User.likedBlogs.length <= stop)
         } else {
-            likedBlogsPageNumber.current -= 1
             setshowSnackbarAlert({
                 show: true,
                 msg: "Error! Something went wrong.",
@@ -58,7 +61,7 @@ export default function LikedBlogs() {
 
     // VARIABLES
 
-    const { LikedBlogsData, setLikedBlogsData, likedBlogsPageNumber, User, setshowSnackbarAlert } = useContext(AppContext)
+    const { LikedBlogsData, setLikedBlogsData, User, setshowSnackbarAlert } = useContext(AppContext)
     const [Data, setData] = useState([])
     const [Loading, setLoading] = useState(true)
     const [EndReached, setEndReached] = useState(false)
@@ -69,12 +72,11 @@ export default function LikedBlogs() {
     // CODE
 
     useEffect(() => {
-        // if (LikedBlogsData.length === 0) {
-        //     fetchBlogs()
-        // } else {
-        //     setLoading(false)
-        // }
-        fetchBlogs()
+        if (LikedBlogsData.length === 0 || LikedBlogsData.length < User.likedBlogs.length) {
+            fetchBlogs()
+        } else {
+            setLoading(false)
+        }
     }, [])
 
     useEffect(() => {

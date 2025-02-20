@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { AppContext } from '../context/ContextAPI';
 
 
-export default function LikeButton() {
+export default function LikeButton({ setNumberOfLikes }) {
 
     // FUNCTIONS
 
@@ -55,6 +55,7 @@ export default function LikeButton() {
 
         isLiked.current = !isLiked.current
         if (isLiked.current === true) {
+            setNumberOfLikes(prev => prev + 1)
             setUser(prev => {
                 return {
                     ...prev,
@@ -63,6 +64,8 @@ export default function LikeButton() {
             })
             likeRequest(isLiked.current)
         } else {
+            setNumberOfLikes(prev => prev - 1)
+            setLikedBlogsData(prev => prev.filter(item => item._id !== id))
             setUser(prev => {
                 return {
                     ...prev,
@@ -80,7 +83,7 @@ export default function LikeButton() {
     const isLiked = useRef(false)
     const isTimerSet = useRef(false)
     const { id } = useParams()
-    const { User, setUser } = useContext(AppContext)
+    const { User, setUser, setLikedBlogsData } = useContext(AppContext)
     const params = {
         blogId: id,
         token: User.accessToken,
@@ -93,6 +96,7 @@ export default function LikeButton() {
     useLayoutEffect(() => {
         if (User.likedBlogs.includes(id)) {
             setlike(true)
+            isLiked.current = true
         }
     }, [])
 
@@ -104,94 +108,3 @@ export default function LikeButton() {
         </button>
     )
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import React, { useContext, useEffect, useRef, useState } from 'react'
-// import { likeBlog, unlikeBlog } from '../services/Blogs';
-// import { useParams } from 'react-router-dom';
-// import { AppContext } from '../context/ContextAPI';
-
-
-// export default function LikeButton() {
-
-//     async function likeRequest() {
-//         const response = await likeBlog(params)
-//         console.log(response)
-//         if (response.status === 200) {
-//             console.log('liked')
-//             isTimerSet.current = false
-//         } else {
-//             // SOMETHING WENT WRONG
-//             isTimerSet.current = false
-//         }
-//     }
-
-//     async function unlikeRequest() {
-//         const response = await unlikeBlog(params)
-//         console.log(response)
-//         if (response.status === 200) {
-//             console.log('unliked')
-//             isTimerSet.current = false
-//         } else {
-//             // SOMETHING WENT WRONG
-//             isTimerSet.current = false
-//         }
-//     }
-
-//     function setDelayTimer(isLikedPreviously) {
-//         isTimerSet.current = true
-//         setTimeout(() => {
-//             if (isLikedPreviously === isLiked.current) {
-//                 if (isLiked.current === true) {
-//                     likeRequest()
-//                 } else {
-//                     unlikeRequest()
-//                 }
-//             } else {
-//                 setDelayTimer(isLiked.current)
-//             }
-//         }, 10000);
-
-//     }
-
-//     function handleLike() {
-//         isLiked.current = !isLiked.current
-//         if (isTimerSet.current === false) {
-//             setDelayTimer(isLiked.current)
-//         }
-//         setlike(prevState => !prevState)
-//     }
-
-//     const [like, setlike] = useState(false)
-//     const isLiked = useRef(false)
-//     const isTimerSet = useRef(false)
-//     const { id } = useParams()
-//     const { User, setUser } = useContext(AppContext)
-//     const params = {
-//         blogId: id,
-//         token: User.accessToken,
-//         User: User,
-//         setUser: setUser
-//     }
-
-
-//     return (
-//         <button onClick={handleLike}>
-//             <i className={`${like || isLiked.current ? "fa-solid" : "fa-regular"} text-red-500 fa-heart text-4xl`}></i>
-//         </button>
-//     )
-// }
-
-
