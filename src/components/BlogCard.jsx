@@ -23,12 +23,8 @@ export default function BlogCard(props) {
     function handleEdit(e) {
         e.stopPropagation()
         navigate(`/edit-blog/${_id}`)
-        console.log('edit blog')
+        // console.log('edit blog')
     }
-    // function handleDelete(e) {
-    //     e.stopPropagation()
-    //     console.log('delete blog')
-    // }
 
     const navigate = useNavigate()
     const location = useLocation()

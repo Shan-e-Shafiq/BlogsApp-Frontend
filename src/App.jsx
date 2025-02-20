@@ -74,7 +74,7 @@ export default function App() {
                     <Route path='/publisher-blogs/:publisherName/:publisherID' element={<PublisherBlogsPage />} />
                 </Route>
 
-                <Route path='testing' element={<Testing />} />
+                {/* <Route path='testing' element={<Testing />} /> */}
                 <Route path='*' element={<NotFound />} />
             </Routes>
 

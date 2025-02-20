@@ -11,7 +11,7 @@ export default function AuthPage() {
     async function fetchUserData() {
         const response = await getUserData()
         if (response.status == 200) {
-            console.log(response.data)
+            // console.log(response.data)
             setUser({ ...response.data, isAuthenticated: true })
             navigate('/home')
             setTimeout(() => {
