@@ -1,7 +1,7 @@
 import { getNewAccessToken } from "../utils"
 
 export async function getAllBlogs(page, limit) {
-    const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/api/blogs/all?page=${page}&limit=${limit}`)
+    const response = await fetch(`/api/blogs/all?page=${page}&limit=${limit}`)
     const data = await response.json()
     return {
         status: response.status,
@@ -10,7 +10,7 @@ export async function getAllBlogs(page, limit) {
 }
 
 export async function getBlogsPublisherID(publisherId, page, limit) {
-    const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/api/blogs/publisher?publisherId=${publisherId}&page=${page}&limit=${limit}`)
+    const response = await fetch(`/api/blogs/publisher?publisherId=${publisherId}&page=${page}&limit=${limit}`)
     const data = await response.json()
     return {
         status: response.status,
@@ -20,7 +20,7 @@ export async function getBlogsPublisherID(publisherId, page, limit) {
 
 
 export async function getBlogById(blogId) {
-    const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/api/blogs/view-blog/${blogId}`)
+    const response = await fetch(`/api/blogs/view-blog/${blogId}`)
     const data = await response.json()
     return {
         status: response.status,
@@ -29,7 +29,7 @@ export async function getBlogById(blogId) {
 }
 
 export async function getBlogComments(blogId, page) {
-    const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/api/blogs/blog-data/comments?id=${blogId}&page=${page}`)
+    const response = await fetch(`/api/blogs/blog-data/comments?id=${blogId}&page=${page}`)
     const data = await response.json()
     return {
         status: response.status,
@@ -38,7 +38,7 @@ export async function getBlogComments(blogId, page) {
 }
 
 export async function getlikedBlogs(likedBlogs) {
-    const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/api/blogs/liked-blogs`, {
+    const response = await fetch(`/api/blogs/liked-blogs`, {
         method: 'POST',
         headers: {
             "Content-Type": "application/json"
@@ -54,7 +54,7 @@ export async function getlikedBlogs(likedBlogs) {
 
 export async function addNewBlog(params) {
     const { newBlog, publisher, token } = params
-    const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/api/blogs/post-blog/new`, {
+    const response = await fetch(`/api/blogs/post-blog/new`, {
         method: 'POST',
         headers: {
             "Authorization": `Bearer ${token}`,
@@ -74,7 +74,7 @@ export async function addNewBlog(params) {
 
 export async function editBlog(params) {
     const { editedData, blogId, token } = params
-    const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/api/blogs/edit-blog/${blogId}`, {
+    const response = await fetch(`/api/blogs/edit-blog/${blogId}`, {
         method: 'PUT',
         headers: {
             "Authorization": `Bearer ${token}`,
@@ -95,7 +95,7 @@ export async function editBlog(params) {
 
 export async function deleteBlog(params) {
     const { blogId, token } = params
-    const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/api/blogs/delete-blog/${blogId}`, {
+    const response = await fetch(`/api/blogs/delete-blog/${blogId}`, {
         method: 'DELETE',
         headers: {
             "Authorization": `Bearer ${token}`,
@@ -114,7 +114,7 @@ export async function deleteBlog(params) {
 
 export async function likeBlog(params) {
     const { blogId, token } = params
-    const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/api/blogs/like-blog/${blogId}`, {
+    const response = await fetch(`/api/blogs/like-blog/${blogId}`, {
         method: 'PUT',
         headers: {
             "Authorization": `Bearer ${token}`,
@@ -132,7 +132,7 @@ export async function likeBlog(params) {
 
 export async function unlikeBlog(params) {
     const { blogId, token } = params
-    const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/api/blogs/unlike-blog/${blogId}`, {
+    const response = await fetch(`/api/blogs/unlike-blog/${blogId}`, {
         method: 'PUT',
         headers: {
             "Authorization": `Bearer ${token}`,
@@ -151,7 +151,7 @@ export async function unlikeBlog(params) {
 
 export async function postComment(params) {
     const { comment, blogId, token } = params
-    const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/api/blogs/post-comment/${blogId}`, {
+    const response = await fetch(`/api/blogs/post-comment/${blogId}`, {
         method: 'POST',
         headers: {
             "Authorization": `Bearer ${token}`,
