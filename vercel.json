@@ -1,0 +1,8 @@
+{
+    "rewrites": [
+        {
+            "source": "/api/:path*",
+            "destination": "https://blogs-app-backend-amber.vercel.app/api/:path*"
+        }
+    ]
+}
