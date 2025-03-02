@@ -1,5 +1,5 @@
 export async function LoginWithEmailPassword(loginData) {
-    const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/api/user/login`, {
+    const response = await fetch(`/api/user/login`, {
         method: 'POST',
         headers: {
             "Content-Type": "application/json"
@@ -15,7 +15,7 @@ export async function LoginWithEmailPassword(loginData) {
 }
 
 export async function SignupWithEmailPassword(signupData) {
-    const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/api/user/signup`, {
+    const response = await fetch(`/api/user/signup`, {
         method: 'POST',
         headers: {
             "Content-Type": "application/json"
@@ -31,7 +31,7 @@ export async function SignupWithEmailPassword(signupData) {
 }
 
 export async function UserLogout() {
-    const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/api/user/logout`, { credentials: 'include' })
+    const response = await fetch(`/api/user/logout`, { credentials: 'include' })
     const data = await response.json()
     return {
         status: response.status,
@@ -40,7 +40,7 @@ export async function UserLogout() {
 }
 
 export async function getUserData() {
-    const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/api/user/auth/getData`, { credentials: 'include' })
+    const response = await fetch(`/api/user/auth/getData`, { credentials: 'include' })
     const data = await response.json()
     return {
         status: response.status,
@@ -49,7 +49,7 @@ export async function getUserData() {
 }
 
 export async function LoginWithGoogle() {
-    const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/api/user/auth/google`)
+    const response = await fetch(`/api/user/auth/google`)
     const data = await response.json()
     return {
         status: response.status,
@@ -58,7 +58,7 @@ export async function LoginWithGoogle() {
 }
 
 export async function GoogleLogout() {
-    const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/api/user/auth/google/logout`, { credentials: 'include' })
+    const response = await fetch(`/api/user/auth/google/logout`, { credentials: 'include' })
     const data = await response.json()
     return {
         status: response.status,
@@ -67,7 +67,7 @@ export async function GoogleLogout() {
 }
 
 export async function LoginWithFacebook() {
-    const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/api/user/auth/facebook`)
+    const response = await fetch(`/api/user/auth/facebook`)
     const data = await response.json()
     return {
         status: response.status,
@@ -76,7 +76,7 @@ export async function LoginWithFacebook() {
 }
 
 export async function FacebookLogout() {
-    const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/api/user/auth/facebook/logout`, { credentials: 'include' })
+    const response = await fetch(`/api/user/auth/facebook/logout`, { credentials: 'include' })
     const data = await response.json()
     return {
         status: response.status,
@@ -85,7 +85,7 @@ export async function FacebookLogout() {
 }
 
 export async function RefreshAccessToken() {
-    const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/api/user/refresh`, { credentials: 'include' })
+    const response = await fetch(`/api/user/refresh`, { credentials: 'include' })
     const data = await response.json()
     return {
         status: response.status,
